@@ -18,7 +18,7 @@ pytest --cov --cov-report term-missing -k via | grep routes
 
 # then compare with
 
-pytest --cov --cov-report term-missing -k via
+pytest --cov --cov-report term-missing -k via | grep routes
 
 # handlers/routes.py           6      2    67%   8-10
 ```
