@@ -24,7 +24,7 @@ def api_url(request):
 
 
 @pytest.fixture(scope="function")
-def api(api_url):
+def api(api_url,app_server):
     api = Api(api_url)
     yield api
 
