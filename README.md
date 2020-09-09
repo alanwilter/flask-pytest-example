@@ -19,10 +19,5 @@ python app.py
 pytest --cov --cov-report term-missing -k via | grep routes
 
 # handlers/routes.py           6      0   100%
-
-# then compare with
-
-pytest --cov --cov-report term-missing -k via | grep routes
-
-# handlers/routes.py           6      2    67%   8-10
 ```
+This now works with `pytest-cov` where `pytest` and `app` service run in separated processes.
