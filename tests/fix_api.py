@@ -10,14 +10,12 @@ import requests
 
 from process_tests import TestProcess
 from process_tests import wait_for_strings
-import time
 
 
 @pytest.fixture(scope="session")
 def app_server():
     with TestProcess("python", "app.py") as app_server:
         wait_for_strings(app_server.read, 10, "Running")
-        # time.sleep(2)
         print(app_server.read())
         yield app_server
         print("\n>>>>Teardown app_service")
@@ -26,7 +24,9 @@ def app_server():
 
 def pytest_addoption(parser):
     parser.addoption(
-        "--api-url", help="api url to test [default: %(default)s]", default="http://localhost:5000",
+        "--api-url",
+        help="api url to test [default: %(default)s]",
+        default="http://localhost:5000",
     )
 
 
@@ -54,7 +54,11 @@ class Api:
         return self._request("get", url, data=data, headers=headers)
 
     def _request(
-        self, method_name, url, data=None, headers=None,
+        self,
+        method_name,
+        url,
+        data=None,
+        headers=None,
     ):
 
         url = urljoin(self.url, url)
